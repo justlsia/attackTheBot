@@ -25,6 +25,12 @@ int lancerDes(String pseudoJoueur) {
   return nbrAleatoire;
 }
 
+// Fonctions de récupération de la réponse de l'utilisateur
+String readText(String question) {
+  print(question);
+  return stdin.readLineSync().toString();
+}
+
 // Fonction d'attaque du bot 
 // Paramétres : pseudo du joueur, objet Bot 
 String attaquerBot(String pseudoJoueur, Bot bot) {
