@@ -31,5 +31,4 @@ class Bot {
     print("${joueur.pseudo} - Santé ${joueur.sante}%");
     }
 
-
 }
