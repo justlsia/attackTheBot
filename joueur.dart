@@ -1,4 +1,3 @@
-
 // Classe : Joueur
 import 'app.dart';
 import 'bot.dart';
@@ -42,5 +41,3 @@ class Joueur {
   }
 
 }
-
-
