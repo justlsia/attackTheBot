@@ -8,18 +8,18 @@ import 'bot.dart';
 import 'joueur.dart';
 
 
-// ***** FONCTIONS *****
+// ----- FONCTIONS -----
 
-// Fonction lancé de dés (générer un nombre aléatoire entre 1 et 12)
-int lancerDes(String pseudoJoueur) {
+// Lancé de dés (générer un nombre aléatoire entre 1 et 12)
+int lancerDes(String pseudo) {
   
   // Générer un nombre aléatoire entre 1 et 12
   Random random = new Random();
-  int nbrAleatoire = (random.nextInt(6) + 1) + (random.nextInt(6) + 1);
+  int randomNbr = (random.nextInt(6) + 1) + (random.nextInt(6) + 1);
 
-  print("${pseudoJoueur} a lancé les dés ... ${nbrAleatoire}");
+  print("${pseudo} a lancé les dés ... ${randomNbr}");
 
-  return nbrAleatoire;
+  return randomNbr;
 }
 
 // Fonctions de récupération de la réponse de l'utilisateur
@@ -33,11 +33,11 @@ String readText(String question) {
 void main(List<String> args) {
 
   // Variables
-  int botDefeated = 0; // Nombre de bot vaincus
+  int botDefeated = 0; // Nombre total de bot vaincus
 
   // Créer un joueur
   Joueur player = new Joueur(); 
-  player.pseudo = "pseudo";
+  player.pseudo = "pseudoPlayer";
   player.force = 1;
   player.sante = 100;
 
@@ -55,14 +55,15 @@ void main(List<String> args) {
     // Boucle de combat tant que le joueur et le bot sont en vie
     while (player.sante > 0 && bot.sante > 0) {
 
-      print("================ Tour en cours ================");
+      print("----- Tour en cours -----");
 
       // Tour du joueur
       player.attackBot(bot);
       bot.displayBotInfo();
 
-      // Vérifier si le Bot est KO
+      // Si le bot est KO
       if (bot.sante <= 0) {
+        // Le joueur monte de niveau (gain de force)
         player.levelUp();
         botDefeated++;
         break;
@@ -75,8 +76,9 @@ void main(List<String> args) {
       // Sauter un espace après le tour du bot
       readText("Appuyez sur entrée pour passer au prochain tour...");
 
-      // Vérifier si le joueur est KO
+      // Si le joueur est KO
       if (player.sante <= 0) {
+        // Fin de la partie
         break;
       }
     }
