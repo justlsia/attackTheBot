@@ -1,4 +1,3 @@
-
 // Importation de modules
 import 'dart:math';
 import 'dart:io';
@@ -98,5 +97,4 @@ void main(List<String> args) {
     }
   }
   
-
 }
