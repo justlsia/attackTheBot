@@ -11,7 +11,6 @@ class Joueur {
     int sante           = 0;
 
   // Méthodes
-
   void displayPlayerInfo() {
     print("État du joueur ${this.pseudo} : force = ${this.force} - santé = ${this.sante} - score = ${this.score}");
   }
