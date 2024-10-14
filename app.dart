@@ -10,14 +10,11 @@ import 'joueur.dart';
 
 // ***** FONCTIONS *****
 
-// Fonction lancé de deux dés (générer un nombre aléatoire entre 1 et 12)
-// Paramétre : pseudo du joueur
+// Fonction lancé de dés (générer un nombre aléatoire entre 1 et 12)
 int lancerDes(String pseudoJoueur) {
   
-  // Initialiser la fonction Random (générer des nombres aléatoires)
+  // Générer un nombre aléatoire entre 1 et 12
   Random random = new Random();
-
-  // Création d'un nombre aléatoire entre 1 et 6
   int nbrAleatoire = (random.nextInt(6) + 1) + (random.nextInt(6) + 1);
 
   print("${pseudoJoueur} a lancé les dés ... ${nbrAleatoire}");
@@ -31,80 +28,73 @@ String readText(String question) {
   return stdin.readLineSync().toString();
 }
 
-// Fonction d'attaque du bot 
-// Paramétres : pseudo du joueur, objet Bot 
-String attaquerBot(String pseudoJoueur, Bot bot) {
-
-  // Variables 
-  int scoreDes      = 0;     // Point de vie perdu du Bot
-  String resultat   = "";    // Phrase renvoyé 
-  int compteurTour  = 1;     // Compter le nombre de tour effecuté
-
-  // Tant que le bot n'est pas KO (% de vie > 0)
-  while (bot.sante > 0) {
-
-    // Attendre que l'utilisateur appuye sur entrée
-    readText("${pseudoJoueur}, appuyer sur entrée pour lancer les dés.");
-
-    // Lancer de dés (générer un nombre aléatoire entre 1 et 12)
-    scoreDes = lancerDes(pseudoJoueur);
-
-    print("${pseudoJoueur} assène un coup sur le bot avec une force de ${scoreDes}.");
-
-    // Actualiser les points de vie du bot
-    bot.sante -= scoreDes;
-
-    // Afficher la santé du bot seulement si supérieur à 0
-    if (bot.sante > 0) {
-      print("Bot - santé ${bot.sante}%");
-    }
-
-    // Afficher le tour en cours
-    print("Fin du tour ${compteurTour}");
-
-    // Actualiser le nombre de tour
-    compteurTour += 1;
-
-    }
-
-  // Si la santé du bot est inférieur ou égale à 0
-  if (bot.sante <= 0) {
-    // Partie gagné
-    resultat = "Vous avez gagné la partie !";
-  }
-
-  // Retourner le resultat 
-  return resultat;
-
-}
-
 
 // ***** MAIN *****
-
 void main(List<String> args) {
 
-  // Variables 
-  String resultat     = ""; // Resultat renvoyé
+  // Variables
+  int botDefeated = 0; // Nombre de bot vaincus
+
+  // Créer un joueur
+  Joueur player = new Joueur(); 
+  player.pseudo = "pseudo";
+  player.force = 1;
+  player.sante = 100;
+
+  // Boucle de jeu
+  while (true) {
+
+    // Créer un bot avec une force aléatoire (pour augmenter la difficulté)
+    Bot bot = new Bot(); 
+    bot.force = Random().nextInt(3) + 1;
+    bot.sante = 100;
+
+    // Récupérer le pseudo du joueur
+    player.pseudo = readText("Quel est votre pseudo ?");
+
+    // Boucle de combat tant que le joueur et le bot sont en vie
+    while (player.sante > 0 && bot.sante > 0) {
+
+      print("================ Tour en cours ================");
+
+      // Tour du joueur
+      player.attackBot(bot);
+      bot.displayBotInfo();
+
+      // Vérifier si le Bot est KO
+      if (bot.sante <= 0) {
+        player.levelUp();
+        botDefeated++;
+        break;
+      }
+
+      // Tour du bot
+      bot.attackPlayer(player);
+      player.displayPlayerInfo();
+
+      // Sauter un espace après le tour du bot
+      readText("Appuyez sur entrée pour passer au prochain tour...");
+
+      // Vérifier si le joueur est KO
+      if (player.sante <= 0) {
+        break;
+      }
+    }
+
+    // Si le joueur est KO
+    if (player.sante <= 0) {
+      print("${player.pseudo} a perdu la partie après avoir vaincu $botDefeated bots !");
+      break;
+    }
+
+
+    // Demander au joueur s'il veut continuer à affronter d'autres bots
+    String continuer = readText("Voulez-vous affronter un autre bot ? (oui/non)");
+    if (continuer.toLowerCase() != "oui") {
+      print("${player.pseudo} a vaincu un total de $botDefeated bots !");
+      break;
+    }
+  }
   
-
-  // Création d'un joueur : J1
-  final Joueur J1 = Joueur();
-
-  // Création du Bot 1
-  final Bot B1 = Bot();
-
-  // Attribution des valeurs de B1
-  B1.force      = 1;
-  B1.sante      = 100;
-
-
-  // Récupérer le pseudo du joueur J1
-  J1.pseudo = readText("Quel est votre pseudo : ");
-
-  // Attaquer le bot (paramètres : pseudo du joueur, objet bot)
-  resultat = attaquerBot(J1.pseudo, B1);
-
-  // Retourner le resultat
-  print(resultat);
 
 }
