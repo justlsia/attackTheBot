@@ -24,7 +24,7 @@ Assurez-vous d'avoir Dart installé sur votre machine.
 Clonez ce dépôt : 
 
 Copier le code \
-git clone https://github.com/votre-utilisateur/nom-du-repo.git \
+git clone https://github.com/votre-utilisateur/nom-du-repo.git 
 
 Accédez au dossier du projet : \
 Copier le code \
