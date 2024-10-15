@@ -1,4 +1,4 @@
-Jeu de Combat avec Dés
+Jeu de Combat avec Dés \
 Bienvenue dans le projet "Jeu de Combat avec Dés", une application de jeu où un joueur combat des bots en lançant des dés pour déterminer l'issue des batailles. Ce projet est écrit en Dart et utilise des concepts de programmation orientée objet.
 
 Table des Matières
