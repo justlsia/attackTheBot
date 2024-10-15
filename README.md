@@ -9,7 +9,7 @@ Table des Matières \
 • Structure du Projet \
 • Contributions \
 • License \
-• Description \
+• Description 
 
 Dans ce jeu, le joueur affronte des bots avec des niveaux de force aléatoires. À chaque tour, le joueur et le bot s'attaquent jusqu'à ce que l'un des deux soit vaincu. Le joueur peut continuer à affronter d'autres bots pour améliorer sa force et son score. \
 
