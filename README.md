@@ -21,18 +21,18 @@ Affichage des informations du joueur et des bots à chaque tour. \
 Installation \
 Assurez-vous d'avoir Dart installé sur votre machine. \
 
-Clonez ce dépôt : \
+Clonez ce dépôt : 
 
 Copier le code \
 git clone https://github.com/votre-utilisateur/nom-du-repo.git \
 
 Accédez au dossier du projet : \
 Copier le code \
-cd nom-du-repo \
+cd nom-du-repo 
 
 Exécutez le projet : \
 Copier le code \
-dart run app.dart \
+dart run app.dart 
 
 Utilisation \
 Au lancement du jeu, vous serez invité à entrer votre pseudo. \
