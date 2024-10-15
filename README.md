@@ -11,7 +11,7 @@ Table des Matières \
 • License \
 • Description 
 
-Dans ce jeu, le joueur affronte des bots avec des niveaux de force aléatoires. À chaque tour, le joueur et le bot s'attaquent jusqu'à ce que l'un des deux soit vaincu. Le joueur peut continuer à affronter d'autres bots pour améliorer sa force et son score. \
+Dans ce jeu, le joueur affronte des bots avec des niveaux de force aléatoires. À chaque tour, le joueur et le bot s'attaquent jusqu'à ce que l'un des deux soit vaincu. Le joueur peut continuer à affronter d'autres bots pour améliorer sa force et son score. 
 
 Fonctionnalités \
 Lancer des dés pour déterminer la force d'attaque. \
@@ -19,7 +19,7 @@ Système de combat entre le joueur et les bots. \
 Possibilité de gagner en force après chaque victoire. \
 Affichage des informations du joueur et des bots à chaque tour. \
 Installation \
-Assurez-vous d'avoir Dart installé sur votre machine. \
+Assurez-vous d'avoir Dart installé sur votre machine. 
 
 Clonez ce dépôt : 
 
@@ -41,6 +41,6 @@ Suivez les instructions à l'écran pour interagir avec le jeu. \
 Structure du Projet \
 app.dart : Fichier principal qui gère la logique du jeu et la boucle principale. \
 joueur.dart : Contient la classe Joueur qui définit les propriétés et méthodes du joueur. \
-bot.dart : Contient la classe Bot qui définit les propriétés et méthodes des bots. \
+bot.dart : Contient la classe Bot qui définit les propriétés et méthodes des bots. 
 
 Merci d'avoir consulté ce README ! Amusez-vous bien à jouer ! 🎲
